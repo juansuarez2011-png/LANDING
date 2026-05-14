@@ -10,9 +10,10 @@
         
         input, select { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: none; box-sizing: border-box; font-size: 16px; background: white; color: #333; }
         
-        .tel-container { display: flex; gap: 5px; }
-        .tel-container select { width: 40%; }
-        .tel-container input { width: 60%; }
+        /* Contenedor para alinear código de país y teléfono */
+        .tel-row { display: flex; gap: 8px; margin: 8px 0; }
+        .tel-row select { width: 45%; margin: 0; }
+        .tel-row input { width: 55%; margin: 0; }
 
         .btn-3d { background: #00b894; color: white; border: none; padding: 15px; border-radius: 10px; font-weight: bold; width: 100%; margin-top: 15px; cursor: pointer; box-shadow: 0 5px #00947a; -webkit-appearance: none; }
         .btn-3d:active { transform: translateY(3px); box-shadow: 0 2px #00947a; }
@@ -29,33 +30,33 @@
 <div class="glass-card">
     <div id="registro">
         <h2>Registro Profesional</h2>
-        <p style="font-size: 14px;">Acceso técnico especializado.</p>
+        <p style="font-size: 14px; opacity: 0.8;">Completa los datos para acceder.</p>
         
         <form action="https://script.google.com/macros/s/AKfycbykgG_c3oh3MKN3IZWxO6OV48Z5C2GqX3VvbucG-Vlr1jAUWQjqDKw6h_E5Pcc02FrU/exec" 
               method="POST" 
               target="hidden_iframe" 
-              onsubmit="procesarEnvio();">
+              onsubmit="alEnviar();">
             
             <input type="text" name="nombre" placeholder="Nombre Completo" required>
             <input type="email" name="email" placeholder="Correo Electrónico" required>
             
-            <div class="tel-container">
-                <select name="cod_pais" id="cod_pais" required>
+            <div class="tel-row">
+                <select name="cod_pais" required>
                     <option value="+58" selected>🇻🇪 +58</option>
                     <option value="+57">🇨🇴 +57</option>
                     <option value="+507">🇵🇦 +507</option>
                     <option value="+1">🇺🇸 +1</option>
                     <option value="+34">🇪🇸 +34</option>
                     <option value="+52">🇲🇽 +52</option>
+                    <option value="+51">🇵🇪 +51</option>
                     <option value="+54">🇦🇷 +54</option>
                     <option value="+56">🇨🇱 +56</option>
-                    <option value="+51">🇵🇪 +51</option>
                     <option value="+593">🇪🇨 +593</option>
                 </select>
                 <input type="tel" name="telefono" placeholder="WhatsApp" required>
             </div>
 
-            <input type="text" name="profesion" placeholder="Profesión / Especialidad" required>
+            <input type="text" name="profesion" placeholder="Profesión" required>
             
             <button type="submit" class="btn-3d" id="btnAccion">OBTENER ACCESO</button>
         </form>
@@ -66,21 +67,21 @@
         <p>Recursos disponibles:</p>
         <a href="https://www.instagram.com/reel/DIBmN3lxdLu/?igsh=ZjFkYzMzMDQzZg==" class="resource-link" target="_blank">Video Tutorial</a>
         <a href="https://juansuarez2011-png.github.io/estaci-n/" class="resource-link" target="_blank">Estación Meteorológica</a>
-        <a href="https://chat.whatsapp.com/GjWkI8muv5AIkk9Q0KP8TN" class="btn-whatsapp">UNIRME AL GRUPO</a>
+        <a href="https://chat.whatsapp.com/GjWkI8muv5AIkk9Q0KP8TN" class="btn-whatsapp">GRUPO WHATSAPP</a>
     </div>
 </div>
 
 <iframe name="hidden_iframe" id="hidden_iframe"></iframe>
 
 <script>
-    function procesarEnvio() {
-        document.getElementById('btnAccion').innerText = "CARGANDO...";
-        // Pequeña espera para que el navegador inicie el envío antes de ocultar el formulario
+    function alEnviar() {
+        document.getElementById('btnAccion').innerText = "PROCESANDO...";
+        // Pequeña pausa para que el envío se procese antes de cambiar la vista
         setTimeout(function() {
             document.getElementById('registro').style.display = 'none';
             document.getElementById('recursos').style.display = 'block';
             window.scrollTo(0,0);
-        }, 800);
+        }, 1000);
     }
 </script>
 
